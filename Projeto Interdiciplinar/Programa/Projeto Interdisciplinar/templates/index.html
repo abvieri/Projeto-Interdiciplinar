@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <title>Conversão de Base</title>
+</head>
+
+<body class="box">
+    <section class="box-inner">
+        <style>
+            * {
+                box-sizing: border-box;
+                font-family: "Poppins", sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                width: 100vw;
+                height: 100vh;
+                background: #000;
+            }
+
+            main {
+                width: 35%;
+                height: 60%;
+                max-width: 300px;
+                max-height: 400px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10px;
+
+                background: rgba(255, 255, 255, 0.35);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(13.5px);
+                -webkit-backdrop-filter: blur(13.5px);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+            }
+
+            h2 {
+                margin-bottom: 10%;
+                color: aliceblue;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+
+            input,
+            select {
+                border-radius: 5px;
+                border: 1px solid #dfdfdf;
+                color: #575757;
+                font-weight: 500;
+                text-align: center;
+            }
+
+            label {
+                font-size: small;
+                color: aliceblue;
+            }
+
+            .box {
+                position: relative;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .box:before {
+                position: absolute;
+                content: '';
+                width: calc(100% + 30px);
+                height: calc(100% + 30px);
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(.7);
+                filter: blur(0);
+                opacity: 1;
+                transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+            }
+
+            .box-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .box:before,
+            .box-inner {
+                background-color: #440099;
+                background-image:
+                    url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='198'%3e%3cdefs%3e%3clinearGradient id='a' x1='50%25' x2='50%25' y1='-10.959%25' y2='100%25'%3e%3cstop stop-color='%23fcc900' stop-opacity='.25' offset='0%25'/%3e%3cstop stop-color='%23fcc900' offset='100%25'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath fill='url(%23a)' fill-rule='evenodd' d='M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z'/%3e%3c/svg%3e"),
+                    url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='198'%3e%3cdefs%3e%3clinearGradient id='a' x1='50%25' x2='50%25' y1='-10.959%25' y2='100%25'%3e%3cstop stop-color='%23fcc900' stop-opacity='.25' offset='0%25'/%3e%3cstop stop-color='%23fcc900' offset='100%25'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath fill='url(%23a)' fill-rule='evenodd' d='M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z'/%3e%3c/svg%3e"),
+                    url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='198'%3e%3cdefs%3e%3clinearGradient id='a' x1='50%25' x2='50%25' y1='-10.959%25' y2='100%25'%3e%3cstop stop-color='%23fcc900' stop-opacity='.25' offset='0%25'/%3e%3cstop stop-color='%23fcc900' offset='100%25'/%3e%3c/linearGradient%3e%3c/defs%3e%3cpath fill='url(%23a)' fill-rule='evenodd' d='M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z'/%3e%3c/svg%3e");
+                background-repeat: repeat-x;
+                background-size: 1600px 50%;
+                background-position: 0 130%, -50px 130%, 500px 130%;
+                animation: 20s waves linear infinite forwards;
+            }
+
+            @keyframes waves {
+                to {
+                    background-position: 1600px 130%, 3150px 130%, 5300px 130%;
+                }
+            }
+        </style>
+
+        <main>
+            <h2>Conversão de Base</h2>
+            <form action="/converter" method="post">
+                <label for="numero">Número:</label>
+                <input type="text" id="numero" name="numero" required><br>
+
+                <label for="base_inicial">Base Inicial:</label>
+                <select id="base_inicial" name="base_inicial" required>
+                    <option value="2">Binário</option>
+                    <option value="8">Octal</option>
+                    <option value="10">Decimal</option>
+                    <option value="16">Hexadecimal</option>
+                </select><br>
+
+                <label for="base_final">Base Final:</label>
+                <select id="base_final" name="base_final" required>
+                    <option value="2">Binário</option>
+                    <option value="8">Octal</option>
+                    <option value="10">Decimal</option>
+                    <option value="16">Hexadecimal</option>
+                </select><br>
+
+                <input type="submit" value="Converter">
+            </form>
+        </main>
+    </section>
+</body>
+
+</html>

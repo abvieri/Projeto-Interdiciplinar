@@ -1,0 +1,9 @@
+Antes de importar o modulo flask, terá que instalar ele em seu computador, no caso você pode instalar
+usando o terminal do computador, ou apertando o botão Windows + R e digitar CMD, dentro do Terminal/CMD
+digite "pip install Flask" sem as aspas para instalar o modulo flask.
+
+Para conseguir aplicar o html e css junto ao python, deverá ser criada uma pasta chamada templates
+dentro da pasta onde está a folha de python, e dentro da pasta templates, você pode criar as folhas
+HTML e CSS, pois na hora da junção, o programa sempre irá procurar uma pasta chamada templates, e 
+nela tem que estar armazenado o HTML que estará requisitando e devolvido a requisição, como no caso a
+requisição de conversão de base. 
